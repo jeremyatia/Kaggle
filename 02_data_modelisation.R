@@ -1,10 +1,9 @@
 #########################################################################
-# Authors : Stephane FENIAR & Jeremy ATIA	- Team "Fast & Curious"		#
-# Date 	  : March 2015													#
-# Title   : Kaggle Axa Drivers Challenge								#
-# Info    : Data modelisation											#
+# Authors : Stephane FENIAR & Jeremy ATIA - Team "Fast & Curious"	#
+# Date 	  : March 2015							#
+# Title   : Kaggle Axa Drivers Challenge				#
+# Info    : Data modelisation						#
 #########################################################################
-
 
 # require the following packages 
 if(!require("dplyr")){
