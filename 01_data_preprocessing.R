@@ -10,16 +10,14 @@ options(scipen=999)
 setwd('C:/Users/Documents/Kaggle/Axa Driver/Input/') # change this path with your data folder
 
 Drivers <- as.numeric(list.files(path = "drivers/")) 
-Drivers <- Drivers[order(Drivers)]
-Drivers <- Drivers[1:100] #to be removed
-NbDrivers <- length(Drivers)
-NbTrips <- 200
+NB_DRIVERS <- length(Drivers)
+NB_TRIPS <- 200
 
 # For a specific driver, recover the data of his 200 trips and summarize each of them by 29 features. 
 # Output: matrix(nrow=200, ncol=29) 
 #--------------------------------------------------------------------------------------------------------------#
 Summary_Driver_Trips <- function(driver) {
-  
+
 	driver_files <- list.files(path = paste("./drivers/",driver,sep="")) # recover the names of the csv files
   	summary <- matrix(nrow=200, ncol=29) # initialize the matrix which will store the summary of the 200 trips
   	t=1 # trip counter (from 1 to 200)
@@ -76,7 +74,7 @@ Summary_Driver_Trips <- function(driver) {
 
 # Apply the "Summary_Driver_Trips" function too all the drivers and store the result in "DriversTripsSummary" 
 #---------------------------------------------------------------------------------------------------------------#
-DriversTripsSummary = matrix(nrow=NbDrivers * NbTrips, ncol=29)
+DriversTripsSummary = matrix(nrow=NB_DRIVERS * NB_TRIPS, ncol=29)
 colnames(GlobalTripsSummary) =  c('driver', 'trip', 'avg_speed', 'sd_speed', 'min_speed', 'max_speed', 'q1_speed', 'q2_speed', 'q3_speed',
                        		'avg_acc', 'sd_acc', 'min_acc', 'max_acc', 'q1_acc', 'q2_acc', 'q3_acc',
                        		'avg_dist_to_orig', 'sd_dist_to_orig', 'max_dist_to_orig', 'q1_dist_to_orig', 'q2_dist_to_orig', 'q3_dist_to_orig',
@@ -86,11 +84,10 @@ d=1 # driver counter
 
 for(driver in Drivers){ 
 	driverTripsSummary= summary_driver_trips(driver)
-	GlobalTripsSummary[seq((d-1)*NbTrips+1, d*NbTrips),] = driverTripsSummary
+	GlobalTripsSummary[seq((d-1)*NB_TRIPS+1, d*NB_TRIPS),] = driverTripsSummary
 	d=d+1 
 }
 
 # Save the result in a csv file 
 #----------------------------------------------------------------------------------------------------------------#
 write.csv(GlobalTripsSummary, 'GlobalTripsSummary.csv', row.names=FALSE)
-
