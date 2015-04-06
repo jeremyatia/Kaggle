@@ -59,5 +59,5 @@ Here is a **pseudo – code** of the implemented algorithm :
 
 ## Result:
 
-**292**nd out of **1528**
+**292**nd out of **1528** => **top 20%**
 
